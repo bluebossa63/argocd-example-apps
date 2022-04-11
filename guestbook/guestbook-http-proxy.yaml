@@ -4,7 +4,7 @@ metadata:
   labels:
     app: guestbook
   name: guestbook-httpproxy
-  namespace: guestbook
+  namespace: default
 spec:
   routes:
   - conditions:
