@@ -1,0 +1,22 @@
+apiVersion: projectcontour.io/v1
+kind: HTTPProxy
+metadata:
+  labels:
+    app: guestbook
+  name: guestbook-httpproxy
+  namespace: guestbook
+spec:
+  routes:
+  - conditions:
+    - prefix: /
+    pathRewritePolicy:
+      replacePrefix:
+      - prefix: /
+        replacement: /
+    services:
+    - name: guestbook-server
+      port: 80
+  virtualhost:
+    fqdn: guestbook.ne.local
+    tls:
+      secretName: guestbook-tls
